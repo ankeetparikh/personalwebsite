@@ -46,7 +46,7 @@ def pi(N):
 print(pi(10**2))
 </pre>
   
-  It uses the handy <i>start:stop:step</i> syntax, as well as scalar assignment to a slice. The runtime complexity of this algorithm is $O(n \log \log n )$. The constant factor appears to be pretty small, probably due to things like NumPy's C-implementation, an efficient memory representation, and various parallelisms. Running this on an Apple M1 Pro with 16GB memory, here are my profiling results:
+  Note that all composite numbers less than $i^2$ have a prime factor less than $i$ so those will have been crossed out in previous iterations. The code uses the handy <i>start:stop:step</i> syntax, as well as scalar assignment to a slice. The runtime complexity of this algorithm is $O(n \log \log n )$. The constant factor appears to be pretty small, probably due to things like NumPy's C-implementation, an efficient memory representation, and various parallelisms. Running this on an Apple M1 Pro with 16GB memory, here are my profiling results:
   \[ \displaystyle
     \begin{array}{|c|c|c|} 
       \hline
@@ -60,11 +60,13 @@ print(pi(10**2))
       10^7 & 664579 & 0.0125 \\
       10^8 & 5761455 & 0.3574 \\
       10^9 & 50847534 & 5.5850 \\
+      10^{10} & 455052511 & 143.7051 \\
       \hline
     \end{array}
   \]
   There are <a href="https://en.wikipedia.org/wiki/Meissel%E2%80%93Lehmer_algorithm">much faster ways</a> to count primes, but 6 seconds for $10^9$ isn't bad.
     </div>
+    <hr>
   </div>
 </body>
 </html>
